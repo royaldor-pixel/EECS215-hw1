@@ -9,7 +9,7 @@ def get_command(comm):
 
 
 def extract_time(comm_list, number):
-    pattern = r'(\d+\.\d+) seconds'
+    pattern = r'(\d+\.\d+) milliseconds'
     q_sort = re.search(pattern, comm_list[5])
     my_sort = re.search(pattern, comm_list[7])
     q_sort_time = float(q_sort.group(1))  if q_sort else None
@@ -18,19 +18,19 @@ def extract_time(comm_list, number):
 
 
 def time_list():
-    num_size = range(2500, 10002501, 100000)
+    num_size = range(100, 10000101, 100000)
     x = []
     q_sort_y = []
     my_sort_y = []
     for i in num_size:
         command = "./quick-sort " + ("%s" % i)
-        time = extract_time(get_command(command), i - 2500)
+        time = extract_time(get_command(command), i - 100)
         x.append(time[0] / 10000)
-        q_sort_y.append(time[1] * 1000)
-        my_sort_y.append(time[2] * 1000)
+        q_sort_y.append(time[1])
+        my_sort_y.append(time[2])
         print(time)
-    q_sort_y_smooth = gaussian_filter1d(q_sort_y, sigma=2)
-    my_sort_y_smooth = gaussian_filter1d(my_sort_y, sigma=2)
+    q_sort_y_smooth = gaussian_filter1d(q_sort_y, sigma=2.5)
+    my_sort_y_smooth = gaussian_filter1d(my_sort_y, sigma=2.5)
     return x, q_sort_y_smooth, my_sort_y_smooth
 
 
