@@ -57,8 +57,8 @@ main (int argc, char* argv[])
   stopwatch_start (timer);
   quickSort (N, A_qs);
   long double t_qs = stopwatch_stop (timer);
-  printf ("Quicksort: %Lg milliseconds ==> %Lg million keys per second\n",
-	  t_qs*1000, 1e-6 * N / t_qs);
+  printf ("Quicksort: %Lg seconds ==> %Lg million keys per second\n",
+	  t_qs, 1e-6 * N / t_qs);
   assertIsSorted (N, A_qs);
 
   /* Sort, calling YOUR routine. */
@@ -66,8 +66,8 @@ main (int argc, char* argv[])
   stopwatch_start (timer);
   mySort (N, A_ms);
   long double t_ms = stopwatch_stop (timer);
-  printf ("My sort: %Lg milliseconds ==> %Lg million keys per second\n",
-	  t_ms*1000, 1e-6 * N / t_ms);
+  printf ("My sort: %Lg seconds ==> %Lg million keys per second\n",
+	  t_ms, 1e-6 * N / t_ms);
   assertIsSorted (N, A_ms);
   assertIsEqual (N, A_ms, A_qs);
   
