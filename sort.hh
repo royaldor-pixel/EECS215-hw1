@@ -40,6 +40,12 @@ void assertIsSorted (int N, const keytype* A);
  */
 void assertIsEqual (int N, const keytype* A, const keytype* B);
 
+void myQuickSort(keytype *A, int p, int r);
+
+int partition(keytype *A, int p, int r);
+
+void swap(keytype* a, keytype* b);
+
 #endif
 
 /* eof */
